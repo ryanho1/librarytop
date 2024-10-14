@@ -1,5 +1,19 @@
-.table{
+body{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+#container{
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+}
+
+body{
+    background-color: rgb(207, 207, 207);
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 500px;
 }
