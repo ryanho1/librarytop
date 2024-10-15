@@ -10,7 +10,7 @@
      <div id="container"></div> 
     <button class="open-button" onclick="openForm()">new book</button>
     <div class="form-popup" id="myForm">
-    <form action="">
+    <form action="" class="contact-form">
         <label for="title">Title of Book</label>
         <input type="text" name="title" id="title" required>
         <label for="author">Author of Book</label>
@@ -18,7 +18,8 @@
         <label for="pages">Number of pages</label>
         <input type="number" name="pages" id="pages" required>
         <label for="read">Read or not</label>
-        <input type="checkbox" checked>
+        <input type="checkbox" name="read" checked> 
+        <!-- // change it to only read or notread -->
 
         <button type="submit" class="btn" id="addbook">addbook</button>
         <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
