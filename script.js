@@ -1,7 +1,8 @@
 const form = document.querySelector('.contact-form');
-const container = document.querySelector("#container");
+const container = document.getElementById("container");
 const addbook = document.querySelector('#addbook');
 const Library = [];
+const book = container.querySelectorAll(".book");
 
 function Book(title,author,pages,read){
 this.title = title;
@@ -51,15 +52,27 @@ function openForm() {
 function bookTitleOnly(Library) {
     for(let i = 0; i < Library.length; i++){
         const newDiv = document.createElement('div');
+        const button = document.createElement('button');
+
         newDiv.textContent = Library[i].title + ' ';
+        button.textContent = 'Remove Book';
+
+        newDiv.classList.add("book");
+        newDiv.style.color='blue';
         container.appendChild(newDiv);
+        container.appendChild(button);
+
+
     }
 }
 
-//Complicated way of getting user input
-//why cant this dissapear after 
+// get query selector of title, assign it to var
+
 function userAddingBooks(event){
+
     event.preventDefault();
+    const newDiv = document.createElement('div');
+    container.appendChild(newDiv);
 
     const data = new
     FormData(document.querySelector('.contact-form'));
@@ -67,14 +80,16 @@ function userAddingBooks(event){
     const NewBook = 
     Object.fromEntries(data.entries());
 
-    Library.push(NewBook.title(NewBook));
-
-    console.log(NewBook);
-    console.log(Library);
+    newDiv.textContent = NewBook.title;
 }
-addbook.addEventListener("click", userAddingBooks);
 
+bookTitleOnly(Library);
+
+addbook.addEventListener("click", userAddingBooks);
+addbook.addEventListener("click", bookTitleOnly);
+
+// book.forEach((book) => {
+// });
 
 // getting the function to display all the books onto the div
-bookTitleOnly(Library);
 console.log(Library);
