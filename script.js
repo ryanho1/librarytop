@@ -1,3 +1,5 @@
+
+
 const form = document.querySelector('.contact-form');
 const container = document.getElementById("container");
 const addbook = document.querySelector('#addbook');
@@ -46,8 +48,7 @@ function openForm() {
 //     }
 // );
 // }       
-let number = 0;
-
+let number=0;
 function bookTitleOnly(Library) {
     for(let i = 0; i < Library.length; i++){               
          number++;
@@ -58,41 +59,54 @@ function bookTitleOnly(Library) {
         newDiv.textContent = Library[i].title + ' ';
         button.textContent = 'Remove Book';
 
-        newDiv.classList.add('book'+result);
-        button.id = ('removebook'+result);
-        newDiv.style.color='blue';
+        newDiv.id = ('book'+result);
+        button.classList.add('removebook');
 
         container.appendChild(newDiv);
-        container.appendChild(button);
+        newDiv.appendChild(button);
     }
 }
 
+// HOW TO GET THIS BUTTON TO APPEAR NEXT TO THE NEWLY INPUTTED BOOKS
 function userAddingBooks(event){
 
     event.preventDefault();
     const newDiv = document.createElement('div');
-    container.appendChild(newDiv);
+    const button = document.createElement('button');
+
+    button.classList.add('removebook');
 
     const data = new
     FormData(document.querySelector('.contact-form'));
 
     const NewBook = 
-    Object.fromEntries(data.entries());
+    Object.fromEntries(data.entries());   
 
     newDiv.textContent = NewBook.title;
-}
+    newDiv.appendChild(button);
+    button.textContent = 'Remove Book';
+    container.appendChild(newDiv);
 
-// how to get each remove button to each book
-// how to connect each reemove button to each book
-// how to actually delete the book
+    const delbutton = document.querySelectorAll('.removebook');
+
+    delbutton.forEach( button => {
+        button.addEventListener('click', deleteBook)
+    });
+}
 
 bookTitleOnly(Library);
 
 addbook.addEventListener("click", userAddingBooks);
 addbook.addEventListener("click", bookTitleOnly);
 
-// book.forEach((book) => {
-// });
+function deleteBook() {
+    this.closest('div').remove(); 
+};
 
-// getting the function to display all the books onto the div
+const delbutton = document.querySelectorAll('.removebook');
+
+    delbutton.forEach( button => {
+        button.addEventListener('click', deleteBook)
+    });
+
 console.log(Library);
