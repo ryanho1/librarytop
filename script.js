@@ -45,28 +45,27 @@ function openForm() {
 //         read: newValue,
 //     }
 // );
-// }
-
-// addbook.addEventListener("click", addBookToLibrary);
+// }       
+let number = 0;
 
 function bookTitleOnly(Library) {
-    for(let i = 0; i < Library.length; i++){
+    for(let i = 0; i < Library.length; i++){               
+         number++;
+        const result = number;
         const newDiv = document.createElement('div');
         const button = document.createElement('button');
-
+            
         newDiv.textContent = Library[i].title + ' ';
         button.textContent = 'Remove Book';
 
-        newDiv.classList.add("book");
+        newDiv.classList.add('book'+result);
+        button.id = ('removebook'+result);
         newDiv.style.color='blue';
+
         container.appendChild(newDiv);
         container.appendChild(button);
-
-
     }
 }
-
-// get query selector of title, assign it to var
 
 function userAddingBooks(event){
 
@@ -82,6 +81,10 @@ function userAddingBooks(event){
 
     newDiv.textContent = NewBook.title;
 }
+
+// how to get each remove button to each book
+// how to connect each reemove button to each book
+// how to actually delete the book
 
 bookTitleOnly(Library);
 
